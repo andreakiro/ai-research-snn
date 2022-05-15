@@ -1,0 +1,40 @@
+Sender: LSF System <lsfadmin@eu-g3-044>
+Subject: Job 218556984: <python main.py test --model=resnet18 --data=cifar10 --id=resnet18_LR01_cifar10_L8 --mode=ann> in cluster <euler> Done
+
+Job <python main.py test --model=resnet18 --data=cifar10 --id=resnet18_LR01_cifar10_L8 --mode=ann> was submitted from host <eu-login-20> by user <pintoa> in cluster <euler> at Sun May 15 17:14:53 2022
+Job was executed on host(s) <4*eu-g3-044>, in queue <gpu.24h>, as user <pintoa> in cluster <euler> at Sun May 15 18:57:47 2022
+</cluster/home/pintoa> was used as the home directory.
+</cluster/home/pintoa/ai-research-snn> was used as the working directory.
+Started at Sun May 15 18:57:47 2022
+Terminated at Sun May 15 18:58:13 2022
+Results reported at Sun May 15 18:58:13 2022
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+python main.py test --model=resnet18 --data=cifar10 --id=resnet18_LR01_cifar10_L8 --mode=ann
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   27.81 sec.
+    Max Memory :                                 3594 MB
+    Average Memory :                             316.00 MB
+    Total Requested Memory :                     8192.00 MB
+    Delta Memory :                               4598.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   26 sec.
+    Turnaround time :                            6200 sec.
+
+The output (if any) follows:
+
+Files already downloaded and verified
+Files already downloaded and verified
+/cluster/home/pintoa/miniconda3/envs/ai-research/lib/python3.8/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Accuracy: 0.9491

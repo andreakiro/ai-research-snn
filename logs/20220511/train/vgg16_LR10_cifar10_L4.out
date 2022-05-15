@@ -1,0 +1,279 @@
+Sender: LSF System <lsfadmin@eu-g3-016>
+Subject: Job 218215838: <python main.py train --model=vgg16 --lr=0.10 --data=cifar10 --l=4 --id=vgg16_LR10_cifar10_L4> in cluster <euler> Done
+
+Job <python main.py train --model=vgg16 --lr=0.10 --data=cifar10 --l=4 --id=vgg16_LR10_cifar10_L4> was submitted from host <eu-login-45> by user <pintoa> in cluster <euler> at Wed May 11 19:03:04 2022
+Job was executed on host(s) <4*eu-g3-016>, in queue <gpu.24h>, as user <pintoa> in cluster <euler> at Thu May 12 03:33:57 2022
+</cluster/home/pintoa> was used as the home directory.
+</cluster/home/pintoa/ai-research-snn> was used as the working directory.
+Started at Thu May 12 03:33:57 2022
+Terminated at Thu May 12 04:30:21 2022
+Results reported at Thu May 12 04:30:21 2022
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+python main.py train --model=vgg16 --lr=0.10 --data=cifar10 --l=4 --id=vgg16_LR10_cifar10_L4
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   9286.25 sec.
+    Max Memory :                                 2908 MB
+    Average Memory :                             2712.53 MB
+    Total Requested Memory :                     8192.00 MB
+    Delta Memory :                               5284.00 MB
+    Max Swap :                                   1 MB
+    Max Processes :                              11
+    Max Threads :                                781
+    Run time :                                   3386 sec.
+    Turnaround time :                            34037 sec.
+
+The output (if any) follows:
+
+Files already downloaded and verified
+Files already downloaded and verified
+/cluster/home/pintoa/miniconda3/envs/ai-research/lib/python3.8/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Epoch 0 -> Val_loss: 0.018205594086647035, Acc: 0.09999999403953552
+best_acc:  tensor(0.1000, device='cuda:0')
+Epoch 1 -> Val_loss: 0.01821366255283356, Acc: 0.09999999403953552
+best_acc:  tensor(0.1000, device='cuda:0')
+Epoch 2 -> Val_loss: 0.016623125791549682, Acc: 0.18789999186992645
+best_acc:  tensor(0.1879, device='cuda:0')
+Epoch 3 -> Val_loss: 0.016150040078163147, Acc: 0.20160000026226044
+best_acc:  tensor(0.2016, device='cuda:0')
+Epoch 4 -> Val_loss: 0.015799648249149322, Acc: 0.22349999845027924
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 5 -> Val_loss: 0.016224054944515228, Acc: 0.19460000097751617
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 6 -> Val_loss: 0.016925142097473145, Acc: 0.16820000112056732
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 7 -> Val_loss: 0.01819093551635742, Acc: 0.09999999403953552
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 8 -> Val_loss: 0.018213549852371214, Acc: 0.09999999403953552
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 9 -> Val_loss: 0.01819975485801697, Acc: 0.09999999403953552
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 10 -> Val_loss: 0.015828317427635193, Acc: 0.19219999015331268
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 11 -> Val_loss: 0.016002441251277925, Acc: 0.18199999630451202
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 12 -> Val_loss: 0.015266065406799317, Acc: 0.20499999821186066
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 13 -> Val_loss: 0.015519818007946015, Acc: 0.19589999318122864
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 14 -> Val_loss: 0.01800515308380127, Acc: 0.11089999973773956
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 15 -> Val_loss: 0.015097563290596009, Acc: 0.2013999968767166
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 16 -> Val_loss: 0.015121365880966187, Acc: 0.18299999833106995
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 17 -> Val_loss: 0.015587739610671997, Acc: 0.1987999975681305
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 18 -> Val_loss: 0.01495945692062378, Acc: 0.21529999375343323
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 19 -> Val_loss: 0.015395385122299194, Acc: 0.21649999916553497
+best_acc:  tensor(0.2235, device='cuda:0')
+Epoch 20 -> Val_loss: 0.015014368391036988, Acc: 0.2298000007867813
+best_acc:  tensor(0.2298, device='cuda:0')
+Epoch 21 -> Val_loss: 0.01489434986114502, Acc: 0.1979999989271164
+best_acc:  tensor(0.2298, device='cuda:0')
+Epoch 22 -> Val_loss: 0.014664701569080353, Acc: 0.23659999668598175
+best_acc:  tensor(0.2366, device='cuda:0')
+Epoch 23 -> Val_loss: 0.015016644656658173, Acc: 0.21779999136924744
+best_acc:  tensor(0.2366, device='cuda:0')
+Epoch 24 -> Val_loss: 0.014904697453975678, Acc: 0.20479999482631683
+best_acc:  tensor(0.2366, device='cuda:0')
+Epoch 25 -> Val_loss: 0.015270013523101807, Acc: 0.2053999900817871
+best_acc:  tensor(0.2366, device='cuda:0')
+Epoch 26 -> Val_loss: 0.014693119049072266, Acc: 0.23479999601840973
+best_acc:  tensor(0.2366, device='cuda:0')
+Epoch 27 -> Val_loss: 0.014944826722145081, Acc: 0.21709999442100525
+best_acc:  tensor(0.2366, device='cuda:0')
+Epoch 28 -> Val_loss: 0.014653453850746154, Acc: 0.2238999903202057
+best_acc:  tensor(0.2366, device='cuda:0')
+Epoch 29 -> Val_loss: 0.01427673635482788, Acc: 0.2433999925851822
+best_acc:  tensor(0.2434, device='cuda:0')
+Epoch 30 -> Val_loss: 0.013439367938041687, Acc: 0.29649999737739563
+best_acc:  tensor(0.2965, device='cuda:0')
+Epoch 31 -> Val_loss: 0.013335453224182128, Acc: 0.3165999948978424
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 32 -> Val_loss: 0.014482134354114532, Acc: 0.2953000068664551
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 33 -> Val_loss: 0.0181262811422348, Acc: 0.11949999630451202
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 34 -> Val_loss: 0.017996005296707154, Acc: 0.12619999051094055
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 35 -> Val_loss: 0.01789448993206024, Acc: 0.13859999179840088
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 36 -> Val_loss: 0.017869254398345948, Acc: 0.1459999978542328
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 37 -> Val_loss: 0.017845105600357056, Acc: 0.13379999995231628
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 38 -> Val_loss: 0.018016102027893065, Acc: 0.13769999146461487
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 39 -> Val_loss: 0.017533742141723634, Acc: 0.1590999960899353
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 40 -> Val_loss: 0.018094973635673525, Acc: 0.13109999895095825
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 41 -> Val_loss: 0.017491109466552735, Acc: 0.16349999606609344
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 42 -> Val_loss: 0.01781042640209198, Acc: 0.14489999413490295
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 43 -> Val_loss: 0.017768088173866273, Acc: 0.1467999964952469
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 44 -> Val_loss: 0.017853977370262147, Acc: 0.14669999480247498
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 45 -> Val_loss: 0.017638370513916014, Acc: 0.15609999001026154
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 46 -> Val_loss: 0.017904966139793397, Acc: 0.14100000262260437
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 47 -> Val_loss: 0.01756460683345795, Acc: 0.15619999170303345
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 48 -> Val_loss: 0.017723992085456847, Acc: 0.16019999980926514
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 49 -> Val_loss: 0.01727647280693054, Acc: 0.19099999964237213
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 50 -> Val_loss: 0.017317973923683165, Acc: 0.17679999768733978
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 51 -> Val_loss: 0.017109417748451233, Acc: 0.18539999425411224
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 52 -> Val_loss: 0.016764358150959016, Acc: 0.20179998874664307
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 53 -> Val_loss: 0.01676322329044342, Acc: 0.20909999310970306
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 54 -> Val_loss: 0.017034818339347838, Acc: 0.18320000171661377
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 55 -> Val_loss: 0.016992187094688416, Acc: 0.19110000133514404
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 56 -> Val_loss: 0.016692798614501955, Acc: 0.2069999873638153
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 57 -> Val_loss: 0.01685619292259216, Acc: 0.2069000005722046
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 58 -> Val_loss: 0.01710941996574402, Acc: 0.2085999995470047
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 59 -> Val_loss: 0.016871117758750914, Acc: 0.20349998772144318
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 60 -> Val_loss: 0.016524322819709777, Acc: 0.22339999675750732
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 61 -> Val_loss: 0.016471569752693177, Acc: 0.2441999912261963
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 62 -> Val_loss: 0.01671829617023468, Acc: 0.20969998836517334
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 63 -> Val_loss: 0.016206976306438445, Acc: 0.2458999902009964
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 64 -> Val_loss: 0.016721119379997252, Acc: 0.22299998998641968
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 65 -> Val_loss: 0.016371720349788666, Acc: 0.23469999432563782
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 66 -> Val_loss: 0.016316029119491576, Acc: 0.241799995303154
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 67 -> Val_loss: 0.015934545397758484, Acc: 0.2628999948501587
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 68 -> Val_loss: 0.01631718887090683, Acc: 0.24699999392032623
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 69 -> Val_loss: 0.016010491001605988, Acc: 0.2603999972343445
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 70 -> Val_loss: 0.01613885724544525, Acc: 0.2572999894618988
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 71 -> Val_loss: 0.01598592278957367, Acc: 0.25619998574256897
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 72 -> Val_loss: 0.01624114143848419, Acc: 0.25220000743865967
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 73 -> Val_loss: 0.016221830332279204, Acc: 0.23070000112056732
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 74 -> Val_loss: 0.01594327473640442, Acc: 0.26420000195503235
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 75 -> Val_loss: 0.01598413687944412, Acc: 0.24399998784065247
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 76 -> Val_loss: 0.015952535283565522, Acc: 0.25110000371932983
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 77 -> Val_loss: 0.015991290175914764, Acc: 0.2606000006198883
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 78 -> Val_loss: 0.015860345995426177, Acc: 0.26589998602867126
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 79 -> Val_loss: 0.015643190109729768, Acc: 0.2777000069618225
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 80 -> Val_loss: 0.015674549460411073, Acc: 0.28769999742507935
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 81 -> Val_loss: 0.0158112180352211, Acc: 0.26969999074935913
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 82 -> Val_loss: 0.015509557509422301, Acc: 0.28929999470710754
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 83 -> Val_loss: 0.015696107363700865, Acc: 0.26809999346733093
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 84 -> Val_loss: 0.015451942205429076, Acc: 0.29089999198913574
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 85 -> Val_loss: 0.015594827592372894, Acc: 0.2870999872684479
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 86 -> Val_loss: 0.016093443489074707, Acc: 0.25360000133514404
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 87 -> Val_loss: 0.0154129163980484, Acc: 0.2962000072002411
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 88 -> Val_loss: 0.015270336198806763, Acc: 0.29839998483657837
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 89 -> Val_loss: 0.015203261291980743, Acc: 0.3061999976634979
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 90 -> Val_loss: 0.015234263801574707, Acc: 0.30489999055862427
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 91 -> Val_loss: 0.015449660348892212, Acc: 0.2924000024795532
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 92 -> Val_loss: 0.015157700717449188, Acc: 0.30959999561309814
+best_acc:  tensor(0.3166, device='cuda:0')
+Epoch 93 -> Val_loss: 0.014999968314170838, Acc: 0.3166999816894531
+best_acc:  tensor(0.3167, device='cuda:0')
+Epoch 94 -> Val_loss: 0.01528328504562378, Acc: 0.29420000314712524
+best_acc:  tensor(0.3167, device='cuda:0')
+Epoch 95 -> Val_loss: 0.015073729240894318, Acc: 0.31379997730255127
+best_acc:  tensor(0.3167, device='cuda:0')
+Epoch 96 -> Val_loss: 0.014988559651374817, Acc: 0.3102000057697296
+best_acc:  tensor(0.3167, device='cuda:0')
+Epoch 97 -> Val_loss: 0.014827664601802825, Acc: 0.32349997758865356
+best_acc:  tensor(0.3235, device='cuda:0')
+Epoch 98 -> Val_loss: 0.014876425623893737, Acc: 0.3197999894618988
+best_acc:  tensor(0.3235, device='cuda:0')
+Epoch 99 -> Val_loss: 0.014994001615047456, Acc: 0.30730000138282776
+best_acc:  tensor(0.3235, device='cuda:0')
+Epoch 100 -> Val_loss: 0.01456148110628128, Acc: 0.33159998059272766
+best_acc:  tensor(0.3316, device='cuda:0')
+Epoch 101 -> Val_loss: 0.01475028829574585, Acc: 0.3269999921321869
+best_acc:  tensor(0.3316, device='cuda:0')
+Epoch 102 -> Val_loss: 0.014450705587863922, Acc: 0.33889999985694885
+best_acc:  tensor(0.3389, device='cuda:0')
+Epoch 103 -> Val_loss: 0.014546333611011505, Acc: 0.3328000009059906
+best_acc:  tensor(0.3389, device='cuda:0')
+Epoch 104 -> Val_loss: 0.014418979704380035, Acc: 0.3425999879837036
+best_acc:  tensor(0.3426, device='cuda:0')
+Epoch 105 -> Val_loss: 0.014452861285209655, Acc: 0.34129998087882996
+best_acc:  tensor(0.3426, device='cuda:0')
+Epoch 106 -> Val_loss: 0.014459671330451965, Acc: 0.3392999768257141
+best_acc:  tensor(0.3426, device='cuda:0')
+Epoch 107 -> Val_loss: 0.014291448438167572, Acc: 0.3507999777793884
+best_acc:  tensor(0.3508, device='cuda:0')
+Epoch 108 -> Val_loss: 0.01420843209028244, Acc: 0.3554999828338623
+best_acc:  tensor(0.3555, device='cuda:0')
+Epoch 109 -> Val_loss: 0.014233332324028016, Acc: 0.35089999437332153
+best_acc:  tensor(0.3555, device='cuda:0')
+Epoch 110 -> Val_loss: 0.0141736407995224, Acc: 0.3520999848842621
+best_acc:  tensor(0.3555, device='cuda:0')
+Epoch 111 -> Val_loss: 0.01414362006187439, Acc: 0.34929999709129333
+best_acc:  tensor(0.3555, device='cuda:0')
+Epoch 112 -> Val_loss: 0.014133204519748688, Acc: 0.35409998893737793
+best_acc:  tensor(0.3555, device='cuda:0')
+Epoch 113 -> Val_loss: 0.014071001410484315, Acc: 0.3560999929904938
+best_acc:  tensor(0.3561, device='cuda:0')
+Epoch 114 -> Val_loss: 0.014030707454681397, Acc: 0.362199991941452
+best_acc:  tensor(0.3622, device='cuda:0')
+Epoch 115 -> Val_loss: 0.014038149762153625, Acc: 0.366599977016449
+best_acc:  tensor(0.3666, device='cuda:0')
+Epoch 116 -> Val_loss: 0.014010330212116241, Acc: 0.3619999885559082
+best_acc:  tensor(0.3666, device='cuda:0')
+Epoch 117 -> Val_loss: 0.014030032539367675, Acc: 0.359499990940094
+best_acc:  tensor(0.3666, device='cuda:0')
+Epoch 118 -> Val_loss: 0.014005634367465974, Acc: 0.35929998755455017
+best_acc:  tensor(0.3666, device='cuda:0')
+Epoch 119 -> Val_loss: 0.014005859422683715, Acc: 0.36329999566078186
+best_acc:  tensor(0.3666, device='cuda:0')
