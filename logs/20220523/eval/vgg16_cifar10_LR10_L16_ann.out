@@ -1,0 +1,39 @@
+Sender: LSF System <lsfadmin@eu-g3-021>
+Subject: Job 219440191: <python main.py test --model=vgg16 --data=cifar10 --id=vgg16_LR10_cifar10_L16 --mode=ann> in cluster <euler> Exited
+
+Job <python main.py test --model=vgg16 --data=cifar10 --id=vgg16_LR10_cifar10_L16 --mode=ann> was submitted from host <eu-login-37> by user <pintoa> in cluster <euler> at Mon May 23 09:53:38 2022
+Job was executed on host(s) <4*eu-g3-021>, in queue <gpu.24h>, as user <pintoa> in cluster <euler> at Mon May 23 09:54:02 2022
+</cluster/home/pintoa> was used as the home directory.
+</cluster/home/pintoa/ai-research-snn> was used as the working directory.
+Started at Mon May 23 09:54:02 2022
+Terminated at Mon May 23 09:54:08 2022
+Results reported at Mon May 23 09:54:08 2022
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+python main.py test --model=vgg16 --data=cifar10 --id=vgg16_LR10_cifar10_L16 --mode=ann
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.20 sec.
+    Max Memory :                                 13 MB
+    Average Memory :                             0.67 MB
+    Total Requested Memory :                     8192.00 MB
+    Delta Memory :                               8179.00 MB
+    Max Swap :                                   -
+    Max Processes :                              1
+    Max Threads :                                1
+    Run time :                                   6 sec.
+    Turnaround time :                            30 sec.
+
+The output (if any) follows:
+
+Traceback (most recent call last):
+  File "main.py", line 1, in <module>
+    import torch.multiprocessing as mp
+ImportError: No module named torch.multiprocessing

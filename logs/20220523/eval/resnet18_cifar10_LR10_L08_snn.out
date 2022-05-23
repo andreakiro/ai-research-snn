@@ -1,0 +1,39 @@
+Sender: LSF System <lsfadmin@eu-g3-023>
+Subject: Job 219440331: <python main.py test --model=resnet18 --data=cifar10 --id=resnet18_LR10_cifar10_L8 --mode=snn --t=128> in cluster <euler> Exited
+
+Job <python main.py test --model=resnet18 --data=cifar10 --id=resnet18_LR10_cifar10_L8 --mode=snn --t=128> was submitted from host <eu-login-37> by user <pintoa> in cluster <euler> at Mon May 23 09:53:51 2022
+Job was executed on host(s) <4*eu-g3-023>, in queue <gpu.24h>, as user <pintoa> in cluster <euler> at Mon May 23 09:59:45 2022
+</cluster/home/pintoa> was used as the home directory.
+</cluster/home/pintoa/ai-research-snn> was used as the working directory.
+Started at Mon May 23 09:59:45 2022
+Terminated at Mon May 23 09:59:51 2022
+Results reported at Mon May 23 09:59:51 2022
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+python main.py test --model=resnet18 --data=cifar10 --id=resnet18_LR10_cifar10_L8 --mode=snn --t=128
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   0.20 sec.
+    Max Memory :                                 13 MB
+    Average Memory :                             1.00 MB
+    Total Requested Memory :                     8192.00 MB
+    Delta Memory :                               8179.00 MB
+    Max Swap :                                   -
+    Max Processes :                              1
+    Max Threads :                                1
+    Run time :                                   5 sec.
+    Turnaround time :                            360 sec.
+
+The output (if any) follows:
+
+Traceback (most recent call last):
+  File "main.py", line 1, in <module>
+    import torch.multiprocessing as mp
+ImportError: No module named torch.multiprocessing
