@@ -25,7 +25,7 @@ def modelpool(MODELNAME, DATANAME):
             return cnn(width=128, height=128, in_channels=2, num_classes=num_classes)
     elif MODELNAME.lower() == 'cnet':
         if 'dvsgesture' in DATANAME.lower():
-            return cnet(in_channels=2, num_classes=num_classes)
+            return cnet(in_channels=1, num_classes=num_classes)
     else:
         print("still not support this model/dataset combination")
         exit(0)
