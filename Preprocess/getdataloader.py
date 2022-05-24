@@ -101,26 +101,26 @@ def GetImageNet(batchsize):
     test_dataloader = DataLoader(test_data, batch_size=batchsize, shuffle=False, num_workers=2, sampler=test_sampler) 
     return train_dataloader, test_dataloader
 
-def GetDVSGesture(batchsize, test_batchsize=4, slicer=SliceByTime(time_window=10000), filter_time=10000, time_window=1000, n_frames=150):
+def GetDVSGesture(batchsize, test_batchsize=4, slicer=SliceByTime(time_window=10000), time_window=1000, n_frames=150):
 
     sensor_size = tonic.datasets.DVSGesture.sensor_size
     trans_ann_train = tonic.transforms.Compose([
-                            tonic.transforms.Denoise(filter_time=filter_time),
+                            #tonic.transforms.Denoise(filter_time=time_window),
                             #tonic.transforms.RandomFlipPolarity(),
                             #tonic.transforms.SpatialJitter(sensor_size=sensor_size, clip_outliers=True),
                             tonic.transforms.ToImage(sensor_size=sensor_size),
                             transforms.Lambda(lambda x: np.diff(x, axis=0)),
                             transforms.Lambda(lambda x: np.clip(x, -1, 1)),
-                            transforms.ToTensor(),
+                            transforms.Lambda(lambda x: torch.from_numpy(x)),
                             Cutout(n_holes=1, length=8)
                         ])
 
     trans_ann_test = tonic.transforms.Compose([
-                           # tonic.transforms.Denoise(filter_time=filter_time),
+                            #tonic.transforms.Denoise(filter_time=filter_time),
                             tonic.transforms.ToImage(sensor_size=sensor_size),
                             transforms.Lambda(lambda x: np.diff(x, axis=0)),
                             transforms.Lambda(lambda x: np.clip(x, -1, 1)),
-                            transforms.ToTensor()
+                            transforms.Lambda(lambda x: torch.from_numpy(x))
                         ])
 
     trans_snn = tonic.transforms.Compose([
