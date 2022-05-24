@@ -110,7 +110,7 @@ def GetDVSGesture(batchsize, test_batchsize=4, slicer=SliceByTime(time_window=10
                             #tonic.transforms.SpatialJitter(sensor_size=sensor_size, clip_outliers=True),
                             tonic.transforms.ToImage(sensor_size=sensor_size),
                             transforms.Lambda(lambda x: np.diff(x, axis=0)),
-                            transform.Lambda(lambda x: np.clip(x, -1, 1)),
+                            transforms.Lambda(lambda x: np.clip(x, -1, 1)),
                             Cutout(n_holes=1, length=8)
                         ])
 
@@ -118,12 +118,14 @@ def GetDVSGesture(batchsize, test_batchsize=4, slicer=SliceByTime(time_window=10
                            # tonic.transforms.Denoise(filter_time=filter_time),
                             tonic.transforms.ToImage(sensor_size=sensor_size),
                             transforms.Lambda(lambda x: np.diff(x, axis=0)),
-                            transform.Lambda(lambda x: np.clip(x, -1, 1))
+                            transforms.Lambda(lambda x: np.clip(x, -1, 1))
                         ])
 
     trans_snn = tonic.transforms.Compose([
         #tonic.transforms.Denoise(filter_time=filter_time),
         tonic.transforms.ToFrame(sensor_size=sensor_size, time_window=time_window),
+        transforms.Lambda(lambda x: np.diff(x, axis=1)),
+        transforms.Lambda(lambda x: np.clip(x, -1, 1)),
         transforms.Lambda(lambda x: x[:n_frames, :, :, :])
     ])
 
