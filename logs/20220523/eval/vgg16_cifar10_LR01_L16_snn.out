@@ -1,13 +1,13 @@
-Sender: LSF System <lsfadmin@eu-g3-023>
-Subject: Job 219440233: <python main.py test --model=vgg16 --data=cifar10 --id=vgg16_LR01_cifar10_L16 --mode=snn --t=128> in cluster <euler> Exited
+Sender: LSF System <lsfadmin@eu-g3-005>
+Subject: Job 219503153: <python main.py test --model=vgg16 --data=cifar10 --id=vgg16_LR01_cifar10_L16 --mode=snn --t=128> in cluster <euler> Done
 
-Job <python main.py test --model=vgg16 --data=cifar10 --id=vgg16_LR01_cifar10_L16 --mode=snn --t=128> was submitted from host <eu-login-37> by user <pintoa> in cluster <euler> at Mon May 23 09:53:41 2022
-Job was executed on host(s) <4*eu-g3-023>, in queue <gpu.24h>, as user <pintoa> in cluster <euler> at Mon May 23 09:58:32 2022
+Job <python main.py test --model=vgg16 --data=cifar10 --id=vgg16_LR01_cifar10_L16 --mode=snn --t=128> was submitted from host <eu-login-41> by user <pintoa> in cluster <euler> at Mon May 23 20:12:13 2022
+Job was executed on host(s) <4*eu-g3-005>, in queue <gpu.24h>, as user <pintoa> in cluster <euler> at Mon May 23 20:35:21 2022
 </cluster/home/pintoa> was used as the home directory.
 </cluster/home/pintoa/ai-research-snn> was used as the working directory.
-Started at Mon May 23 09:58:32 2022
-Terminated at Mon May 23 09:58:34 2022
-Results reported at Mon May 23 09:58:34 2022
+Started at Mon May 23 20:35:21 2022
+Terminated at Mon May 23 20:37:58 2022
+Results reported at Mon May 23 20:37:58 2022
 
 Your job looked like:
 
@@ -16,24 +16,40 @@ Your job looked like:
 python main.py test --model=vgg16 --data=cifar10 --id=vgg16_LR01_cifar10_L16 --mode=snn --t=128
 ------------------------------------------------------------
 
-Exited with exit code 1.
+Successfully completed.
 
 Resource usage summary:
 
-    CPU time :                                   0.20 sec.
-    Max Memory :                                 13 MB
-    Average Memory :                             -
+    CPU time :                                   158.80 sec.
+    Max Memory :                                 3716 MB
+    Average Memory :                             3227.00 MB
     Total Requested Memory :                     8192.00 MB
-    Delta Memory :                               8179.00 MB
+    Delta Memory :                               4476.00 MB
     Max Swap :                                   -
-    Max Processes :                              1
-    Max Threads :                                1
-    Run time :                                   2 sec.
-    Turnaround time :                            293 sec.
+    Max Processes :                              11
+    Max Threads :                                40
+    Run time :                                   157 sec.
+    Turnaround time :                            1545 sec.
 
 The output (if any) follows:
 
-Traceback (most recent call last):
-  File "main.py", line 1, in <module>
-    import torch.multiprocessing as mp
-ImportError: No module named torch.multiprocessing
+/cluster/home/pintoa/miniconda3/envs/ai-research/lib/python3.8/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Files already downloaded and verified
+Files already downloaded and verified
+  0%|          | 0/79 [00:00<?, ?it/s]  1%|▏         | 1/79 [00:07<10:21,  7.97s/it]  3%|▎         | 2/79 [00:09<05:28,  4.26s/it]  4%|▍         | 3/79 [00:11<03:54,  3.08s/it]  5%|▌         | 4/79 [00:12<03:09,  2.52s/it]  6%|▋         | 5/79 [00:14<02:44,  2.22s/it]  8%|▊         | 6/79 [00:16<02:28,  2.04s/it]  9%|▉         | 7/79 [00:18<02:18,  1.92s/it] 10%|█         | 8/79 [00:19<02:10,  1.84s/it] 11%|█▏        | 9/79 [00:21<02:05,  1.79s/it] 13%|█▎        | 10/79 [00:23<02:01,  1.76s/it] 14%|█▍        | 11/79 [00:24<01:58,  1.74s/it] 15%|█▌        | 12/79 [00:26<01:55,  1.72s/it] 16%|█▋        | 13/79 [00:28<01:53,  1.71s/it] 18%|█▊        | 14/79 [00:29<01:50,  1.71s/it] 19%|█▉        | 15/79 [00:31<01:48,  1.70s/it] 20%|██        | 16/79 [00:33<01:47,  1.70s/it] 22%|██▏       | 17/79 [00:34<01:45,  1.70s/it] 23%|██▎       | 18/79 [00:36<01:43,  1.70s/it] 24%|██▍       | 19/79 [00:38<01:41,  1.70s/it] 25%|██▌       | 20/79 [00:39<01:40,  1.70s/it] 27%|██▋       | 21/79 [00:41<01:38,  1.70s/it] 28%|██▊       | 22/79 [00:43<01:36,  1.70s/it] 29%|██▉       | 23/79 [00:45<01:35,  1.70s/it] 30%|███       | 24/79 [00:46<01:33,  1.70s/it] 32%|███▏      | 25/79 [00:48<01:31,  1.70s/it] 33%|███▎      | 26/79 [00:50<01:29,  1.70s/it] 34%|███▍      | 27/79 [00:51<01:28,  1.70s/it] 35%|███▌      | 28/79 [00:53<01:26,  1.70s/it] 37%|███▋      | 29/79 [00:55<01:24,  1.70s/it] 38%|███▊      | 30/79 [00:56<01:23,  1.70s/it] 39%|███▉      | 31/79 [00:58<01:21,  1.70s/it] 41%|████      | 32/79 [01:00<01:19,  1.70s/it] 42%|████▏     | 33/79 [01:02<01:18,  1.70s/it] 43%|████▎     | 34/79 [01:03<01:16,  1.70s/it] 44%|████▍     | 35/79 [01:05<01:14,  1.70s/it] 46%|████▌     | 36/79 [01:07<01:13,  1.70s/it] 47%|████▋     | 37/79 [01:08<01:11,  1.70s/it] 48%|████▊     | 38/79 [01:10<01:09,  1.70s/it] 49%|████▉     | 39/79 [01:12<01:08,  1.70s/it] 51%|█████     | 40/79 [01:13<01:06,  1.71s/it] 52%|█████▏    | 41/79 [01:15<01:04,  1.71s/it] 53%|█████▎    | 42/79 [01:17<01:03,  1.71s/it] 54%|█████▍    | 43/79 [01:19<01:01,  1.71s/it] 56%|█████▌    | 44/79 [01:20<00:59,  1.71s/it] 57%|█████▋    | 45/79 [01:22<00:58,  1.71s/it] 58%|█████▊    | 46/79 [01:24<00:56,  1.71s/it] 59%|█████▉    | 47/79 [01:25<00:54,  1.71s/it] 61%|██████    | 48/79 [01:27<00:52,  1.71s/it] 62%|██████▏   | 49/79 [01:29<00:51,  1.71s/it] 63%|██████▎   | 50/79 [01:31<00:49,  1.71s/it] 65%|██████▍   | 51/79 [01:32<00:47,  1.71s/it] 66%|██████▌   | 52/79 [01:34<00:46,  1.71s/it] 67%|██████▋   | 53/79 [01:36<00:44,  1.71s/it] 68%|██████▊   | 54/79 [01:37<00:42,  1.71s/it] 70%|██████▉   | 55/79 [01:39<00:41,  1.71s/it] 71%|███████   | 56/79 [01:41<00:39,  1.71s/it] 72%|███████▏  | 57/79 [01:43<00:37,  1.71s/it] 73%|███████▎  | 58/79 [01:44<00:35,  1.71s/it] 75%|███████▍  | 59/79 [01:46<00:34,  1.71s/it] 76%|███████▌  | 60/79 [01:48<00:32,  1.71s/it] 77%|███████▋  | 61/79 [01:49<00:30,  1.71s/it] 78%|███████▊  | 62/79 [01:51<00:29,  1.71s/it] 80%|███████▉  | 63/79 [01:53<00:27,  1.71s/it] 81%|████████  | 64/79 [01:55<00:25,  1.71s/it] 82%|████████▏ | 65/79 [01:56<00:23,  1.71s/it] 84%|████████▎ | 66/79 [01:58<00:22,  1.71s/it] 85%|████████▍ | 67/79 [02:00<00:20,  1.71s/it] 86%|████████▌ | 68/79 [02:01<00:18,  1.71s/it] 87%|████████▋ | 69/79 [02:03<00:17,  1.71s/it] 89%|████████▊ | 70/79 [02:05<00:15,  1.71s/it] 90%|████████▉ | 71/79 [02:06<00:13,  1.71s/it] 91%|█████████ | 72/79 [02:08<00:11,  1.71s/it] 92%|█████████▏| 73/79 [02:10<00:10,  1.71s/it] 94%|█████████▎| 74/79 [02:12<00:08,  1.71s/it] 95%|█████████▍| 75/79 [02:13<00:06,  1.71s/it] 96%|█████████▌| 76/79 [02:15<00:05,  1.71s/it] 97%|█████████▋| 77/79 [02:17<00:03,  1.71s/it] 99%|█████████▊| 78/79 [02:18<00:01,  1.71s/it]100%|██████████| 79/79 [02:19<00:00,  1.37s/it]100%|██████████| 79/79 [02:19<00:00,  1.77s/it]
+Accuracy:  tensor([0.1000, 0.1542, 0.8224, 0.8861, 0.8965, 0.9040, 0.9087, 0.9149, 0.9193,
+        0.9219, 0.9247, 0.9270, 0.9286, 0.9307, 0.9314, 0.9327, 0.9331, 0.9332,
+        0.9341, 0.9348, 0.9354, 0.9359, 0.9364, 0.9361, 0.9371, 0.9368, 0.9372,
+        0.9373, 0.9371, 0.9374, 0.9374, 0.9376, 0.9377, 0.9377, 0.9375, 0.9378,
+        0.9381, 0.9383, 0.9382, 0.9382, 0.9385, 0.9387, 0.9387, 0.9390, 0.9389,
+        0.9392, 0.9390, 0.9390, 0.9387, 0.9385, 0.9387, 0.9388, 0.9390, 0.9390,
+        0.9390, 0.9392, 0.9396, 0.9395, 0.9396, 0.9399, 0.9396, 0.9395, 0.9394,
+        0.9396, 0.9396, 0.9394, 0.9395, 0.9394, 0.9396, 0.9396, 0.9395, 0.9396,
+        0.9393, 0.9392, 0.9393, 0.9393, 0.9394, 0.9393, 0.9393, 0.9394, 0.9393,
+        0.9393, 0.9393, 0.9392, 0.9393, 0.9391, 0.9391, 0.9390, 0.9391, 0.9390,
+        0.9389, 0.9390, 0.9390, 0.9389, 0.9390, 0.9390, 0.9390, 0.9391, 0.9392,
+        0.9392, 0.9390, 0.9392, 0.9392, 0.9392, 0.9389, 0.9389, 0.9388, 0.9386,
+        0.9387, 0.9388, 0.9390, 0.9388, 0.9389, 0.9386, 0.9387, 0.9387, 0.9387,
+        0.9387, 0.9389, 0.9389, 0.9387, 0.9388, 0.9388, 0.9390, 0.9390, 0.9389,
+        0.9390, 0.9390], device='cuda:0')

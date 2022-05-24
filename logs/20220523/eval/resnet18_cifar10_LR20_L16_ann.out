@@ -1,13 +1,13 @@
 Sender: LSF System <lsfadmin@eu-g3-023>
-Subject: Job 219440308: <python main.py test --model=resnet18 --data=cifar10 --id=resnet18_LR20_cifar10_L16 --mode=ann> in cluster <euler> Exited
+Subject: Job 219503197: <python main.py test --model=resnet18 --data=cifar10 --id=resnet18_LR20_cifar10_L16 --mode=ann> in cluster <euler> Done
 
-Job <python main.py test --model=resnet18 --data=cifar10 --id=resnet18_LR20_cifar10_L16 --mode=ann> was submitted from host <eu-login-37> by user <pintoa> in cluster <euler> at Mon May 23 09:53:49 2022
-Job was executed on host(s) <4*eu-g3-023>, in queue <gpu.24h>, as user <pintoa> in cluster <euler> at Mon May 23 09:59:35 2022
+Job <python main.py test --model=resnet18 --data=cifar10 --id=resnet18_LR20_cifar10_L16 --mode=ann> was submitted from host <eu-login-41> by user <pintoa> in cluster <euler> at Mon May 23 20:12:23 2022
+Job was executed on host(s) <4*eu-g3-023>, in queue <gpu.24h>, as user <pintoa> in cluster <euler> at Mon May 23 22:00:35 2022
 </cluster/home/pintoa> was used as the home directory.
 </cluster/home/pintoa/ai-research-snn> was used as the working directory.
-Started at Mon May 23 09:59:35 2022
-Terminated at Mon May 23 09:59:37 2022
-Results reported at Mon May 23 09:59:37 2022
+Started at Mon May 23 22:00:35 2022
+Terminated at Mon May 23 22:00:59 2022
+Results reported at Mon May 23 22:00:59 2022
 
 Your job looked like:
 
@@ -16,24 +16,25 @@ Your job looked like:
 python main.py test --model=resnet18 --data=cifar10 --id=resnet18_LR20_cifar10_L16 --mode=ann
 ------------------------------------------------------------
 
-Exited with exit code 1.
+Successfully completed.
 
 Resource usage summary:
 
-    CPU time :                                   0.22 sec.
-    Max Memory :                                 13 MB
-    Average Memory :                             1.00 MB
+    CPU time :                                   25.57 sec.
+    Max Memory :                                 3611 MB
+    Average Memory :                             204.67 MB
     Total Requested Memory :                     8192.00 MB
-    Delta Memory :                               8179.00 MB
+    Delta Memory :                               4581.00 MB
     Max Swap :                                   -
-    Max Processes :                              1
-    Max Threads :                                1
-    Run time :                                   0 sec.
-    Turnaround time :                            348 sec.
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   24 sec.
+    Turnaround time :                            6516 sec.
 
 The output (if any) follows:
 
-Traceback (most recent call last):
-  File "main.py", line 1, in <module>
-    import torch.multiprocessing as mp
-ImportError: No module named torch.multiprocessing
+Files already downloaded and verified
+Files already downloaded and verified
+/cluster/home/pintoa/miniconda3/envs/ai-research/lib/python3.8/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Accuracy: 0.9470
