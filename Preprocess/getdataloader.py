@@ -111,6 +111,7 @@ def GetDVSGesture(batchsize, test_batchsize=4, slicer=SliceByTime(time_window=10
                             tonic.transforms.ToImage(sensor_size=sensor_size),
                             transforms.Lambda(lambda x: np.diff(x, axis=0)),
                             transforms.Lambda(lambda x: np.clip(x, -1, 1)),
+                            transforms.ToTensor(),
                             Cutout(n_holes=1, length=8)
                         ])
 
@@ -118,7 +119,8 @@ def GetDVSGesture(batchsize, test_batchsize=4, slicer=SliceByTime(time_window=10
                            # tonic.transforms.Denoise(filter_time=filter_time),
                             tonic.transforms.ToImage(sensor_size=sensor_size),
                             transforms.Lambda(lambda x: np.diff(x, axis=0)),
-                            transforms.Lambda(lambda x: np.clip(x, -1, 1))
+                            transforms.Lambda(lambda x: np.clip(x, -1, 1)),
+                            transforms.ToTensor()
                         ])
 
     trans_snn = tonic.transforms.Compose([
