@@ -8,17 +8,17 @@ from Preprocess.augment import Cutout, CIFAR10Policy
 import numpy as np
 
 import tonic
-from tonic.slicers import SliceByEventCount
+from tonic.slicers import SliceByEventCount, SliceByTime
 from tonic import SlicedDataset, DiskCachedDataset
 
 # your own data dir
 DIR = { 
-        # 'CIFAR10': '/cluster/scratch/chanr/datasets',
-        'CIFAR10': './data',
+        'CIFAR10': '/cluster/scratch/chanr/datasets',
+        # 'CIFAR10': './data',
         'CIFAR100': '/cluster/scratch/chanr/datasets',
         'ImageNet': 'YOUR_IMAGENET_DIR', 
-        # 'DVSGesture': '/cluster/scratch/chanr/datasets'
-        'DVSGesture': './data'
+        'DVSGesture': '/cluster/scratch/chanr/datasets'
+       # 'DVSGesture': './data'
     }
 
 # def GetCifar10(batchsize, attack=False):
@@ -103,26 +103,26 @@ def GetImageNet(batchsize):
     test_dataloader = DataLoader(test_data, batch_size=batchsize, shuffle=False, num_workers=2, sampler=test_sampler) 
     return train_dataloader, test_dataloader
 
-def GetDVSGesture(batchsize, test_batchsize=4, slicer=SliceByEventCount(event_count=3000), filter_time=10000, time_window=1000, ms_end=300):
+def GetDVSGesture(batchsize, test_batchsize=4, slicer=SliceByTime(time_window=10000), filter_time=10000, time_window=1000, ms_end=150):
 
     sensor_size = tonic.datasets.DVSGesture.sensor_size
     trans_ann_train = tonic.transforms.Compose([
                             tonic.transforms.Denoise(filter_time=filter_time),
-                            tonic.transforms.RandomFlipPolarity(),
-                            tonic.transforms.SpatialJitter(sensor_size=sensor_size, clip_outliers=True),
+                            #tonic.transforms.RandomFlipPolarity(),
+                            #tonic.transforms.SpatialJitter(sensor_size=sensor_size, clip_outliers=True),
                             tonic.transforms.ToImage(sensor_size=sensor_size),
                             transforms.Lambda(lambda x: torch.from_numpy(x/31)),
                             Cutout(n_holes=1, length=8)
                         ])
 
     trans_ann_test = tonic.transforms.Compose([
-                            tonic.transforms.Denoise(filter_time=filter_time),
+                           # tonic.transforms.Denoise(filter_time=filter_time),
                             tonic.transforms.ToImage(sensor_size=sensor_size),
                             transforms.Lambda(lambda x: torch.from_numpy(x/31))
                         ])
 
     trans_snn = tonic.transforms.Compose([
-        tonic.transforms.Denoise(filter_time=filter_time),
+        #tonic.transforms.Denoise(filter_time=filter_time),
         tonic.transforms.ToFrame(sensor_size=sensor_size, time_window=time_window),
         transforms.Lambda(lambda x: x[:ms_end, :, :, :]),
     ])
