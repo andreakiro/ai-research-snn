@@ -38,6 +38,7 @@ def train_ann(train_dataloader, test_dataloader, model, epochs, device, loss_fn,
     print('Training Model')
     model.cuda(device)
     para1, para2, para3 = regular_set(model)
+    '''
     optimizer = torch.optim.SGD([
                                 {'params': para1, 'weight_decay': wd}, 
                                 {'params': para2, 'weight_decay': wd}, 
@@ -45,6 +46,14 @@ def train_ann(train_dataloader, test_dataloader, model, epochs, device, loss_fn,
                                 ],
                                 lr=lr, 
                                 momentum=0.9)
+    '''
+    optimizer = torch.optim.Adam([
+                                {'params': para1, 'weight_decay': wd}, 
+                                {'params': para2, 'weight_decay': wd}, 
+                                {'params': para3, 'weight_decay': wd}
+                                ],
+                                lr=lr
+    )
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=epochs)
     best_acc = 0
     for ct, epoch in enumerate(range(epochs)):
@@ -94,7 +103,7 @@ def eval_snn(test_dataloader, model, device, sim_len=8, rank=0, neuormorphic_dat
             label = label.cuda()
             for t in range(sim_len):
                 if neuormorphic_data:
-                    out = model(img[:, t, :, :, :])
+                    out = model(img[:, t, :, :, :]*4)
                 else:
                     out = model(img)
                 spikes += out

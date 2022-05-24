@@ -8,7 +8,7 @@ from Preprocess.augment import Cutout, CIFAR10Policy
 import numpy as np
 
 import tonic
-from tonic.slicers import SliceByEventCount
+from tonic.slicers import SliceByEventCount, SliceByTime
 from tonic import SlicedDataset, DiskCachedDataset
 
 # your own data dir
@@ -101,13 +101,13 @@ def GetImageNet(batchsize):
     test_dataloader = DataLoader(test_data, batch_size=batchsize, shuffle=False, num_workers=2, sampler=test_sampler) 
     return train_dataloader, test_dataloader
 
-def GetDVSGesture(batchsize, test_batchsize=4, slicer=SliceByEventCount(event_count=3000), filter_time=10000, time_window=1000, ms_end=300):
+def GetDVSGesture(batchsize, test_batchsize=4, slicer=SliceByTime(time_window=100000), filter_time=10000, time_window=1000, ms_end=1500):
 
     sensor_size = tonic.datasets.DVSGesture.sensor_size
     trans_ann_train = tonic.transforms.Compose([
                             tonic.transforms.Denoise(filter_time=filter_time),
-                            tonic.transforms.RandomFlipPolarity(),
-                            tonic.transforms.SpatialJitter(sensor_size=sensor_size, clip_outliers=True),
+                            #tonic.transforms.RandomFlipPolarity(),
+                            #tonic.transforms.SpatialJitter(sensor_size=sensor_size, clip_outliers=True),
                             tonic.transforms.ToImage(sensor_size=sensor_size),
                             transforms.Lambda(lambda x: torch.from_numpy(x/31)),
                             Cutout(n_holes=1, length=8)
@@ -122,7 +122,7 @@ def GetDVSGesture(batchsize, test_batchsize=4, slicer=SliceByEventCount(event_co
     trans_snn = tonic.transforms.Compose([
         tonic.transforms.Denoise(filter_time=filter_time),
         tonic.transforms.ToFrame(sensor_size=sensor_size, time_window=time_window),
-        transforms.Lambda(lambda x: x[:ms_end, :, :, :]),
+        transforms.Lambda(lambda x: x[:ms_end, :, :, :])
     ])
 
     train_data = tonic.datasets.DVSGesture(save_to=os.path.join(DIR['DVSGesture'], 'train'), train=True, transform=None)
