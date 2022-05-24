@@ -3,7 +3,7 @@ from torch import nn
 import torch
 from tqdm import tqdm
 from utils import *
-import torch.optim as optim
+from modules import LabelSmoothing
 import torch.distributed as dist
 import random
 import os
@@ -34,18 +34,20 @@ def eval_ann(test_dataloader, model, loss_fn, device, rank=0):
             tot += (label==out.max(1)[1]).sum().data
     return tot/length, epoch_loss/length
 
-def train_ann(train_dataloader, test_dataloader, model, epochs, device, loss_fn, lr=0.0005, wd=1e-5, save=None, parallel=False, rank=0):
+def train_ann(train_dataloader, test_dataloader, model, epochs, device, loss_fn, lr=0.1, wd=5e-4, save=None, parallel=False, rank=0):
     print('Training Model')
     model.cuda(device)
     para1, para2, para3 = regular_set(model)
-    # optimizer = torch.optim.SGD([
-    #                             {'params': para1, 'weight_decay': wd}, 
-    #                             {'params': para2, 'weight_decay': wd}, 
-    #                             {'params': para3, 'weight_decay': wd}
-    #                             ],
-    #                             lr=lr, 
-    #                             momentum=0.9)
-    optimizer = optim.Adam([
+    '''
+    optimizer = torch.optim.SGD([
+                                {'params': para1, 'weight_decay': wd}, 
+                                {'params': para2, 'weight_decay': wd}, 
+                                {'params': para3, 'weight_decay': wd}
+                                ],
+                                lr=lr, 
+                                momentum=0.9)
+    '''
+    optimizer = torch.optim.Adam([
                                 {'params': para1, 'weight_decay': wd}, 
                                 {'params': para2, 'weight_decay': wd}, 
                                 {'params': para3, 'weight_decay': wd}
@@ -59,7 +61,8 @@ def train_ann(train_dataloader, test_dataloader, model, epochs, device, loss_fn,
         epoch_loss = 0
         length = 0
         model.train()
-        for ct, (img, label) in enumerate(train_dataloader):
+        #print(len(train_dataloader))
+        for ct, (img, label) in enumerate(tqdm(train_dataloader)):
             img = img.cuda(device)
             label = label.cuda(device)
             optimizer.zero_grad()
@@ -72,6 +75,7 @@ def train_ann(train_dataloader, test_dataloader, model, epochs, device, loss_fn,
             # print('Computed loss')
             epoch_loss += loss.item()
             length += len(label)
+            #print(f'{ct} out of {len(train_dataloader)} batches')
             # if ct/len(train_dataloader)*100 % 5 == 0: 
             #     print(f'----- \n Finished all batches {ct/len(train_dataloader)*100} percent')
         tmp_acc, val_loss = eval_ann(test_dataloader, model, loss_fn, device, rank)
@@ -85,7 +89,7 @@ def train_ann(train_dataloader, test_dataloader, model, epochs, device, loss_fn,
         scheduler.step()
     return best_acc, model
 
-def eval_snn(test_dataloader, model, device, sim_len=8, rank=0):
+def eval_snn(test_dataloader, model, device, sim_len=8, rank=0, neuormorphic_data=False):
     tot = torch.zeros(sim_len).cuda(device)
     length = 0
     model = model.cuda(device)
@@ -98,7 +102,10 @@ def eval_snn(test_dataloader, model, device, sim_len=8, rank=0):
             img = img.cuda()
             label = label.cuda()
             for t in range(sim_len):
-                out = model(img)
+                if neuormorphic_data:
+                    out = model(img[:, t, :, :, :]*4)
+                else:
+                    out = model(img)
                 spikes += out
                 tot[t] += (label==spikes.max(1)[1]).sum()
             reset_net(model)
