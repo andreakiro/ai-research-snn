@@ -7,8 +7,10 @@ from utils import replace_activation_by_floor, replace_activation_by_neuron, rep
 from ImageNet.train import main_worker
 import torch.nn as nn
 import os
+import ssl
 
 if __name__ == "__main__":
+    ssl._create_default_https_context = ssl._create_unverified_context
 
     parser = argparse.ArgumentParser()
 
@@ -37,7 +39,10 @@ if __name__ == "__main__":
         mp.spawn(main_worker, nprocs=args.gpus, args=(args.gpus, args))
     else:
         # preparing data
-        train, test = datapool(args.data, args.bs)
+        if args.data == 'dvsgesture':
+            train, test, test_snn = datapool(args.data, args.bs)
+        else: 
+            train, test = datapool(args.data, args.bs)
         # preparing model
         model = modelpool(args.model, args.data)
         model = replace_maxpool2d_by_avgpool2d(model)
@@ -50,7 +55,10 @@ if __name__ == "__main__":
             if args.mode == 'snn':
                 model = replace_activation_by_neuron(model)
                 model.to(args.device)
-                acc = eval_snn(test, model, args.device, args.t)
+                if args.data == 'dvsgesture':
+                    acc = eval_snn(test_snn, model, args.device, args.t, neuormorphic_data=True)
+                else:
+                    acc = eval_snn(test, model, args.device, args.t)
                 print('Accuracy: ', acc)
             elif args.mode == 'ann':
                 model.to(args.device)
