@@ -7,6 +7,8 @@ In this project we try to reproduce the results of a paper suggesting a new meth
 - [Authors repo](https://github.com/putshua/SNN_conversion_QCFS)
 - [Tonic lib](https://github.com/neuromorphs/tonic)
 
+You can find more information about the project on the [Project Poster](./Poster.pdf)
+
 ## Run the models
 ```
 # before running
