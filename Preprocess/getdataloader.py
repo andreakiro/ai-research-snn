@@ -12,12 +12,11 @@ from tonic.slicers import SliceByEventCount, SliceByTime
 from tonic import SlicedDataset, DiskCachedDataset
 
 # your own data dir
-DIR = { 
-        'CIFAR10': '/cluster/scratch/rsrinivasan/datasets',
-        'CIFAR100': '/cluster/scratch/rsrinivasan/datasets',
-        'ImageNet': 'YOUR_IMAGENET_DIR', 
-        'DVSGesture': '/cluster/scratch/rsrinivasan/datasets'
-    }
+DIR = {
+  'CIFAR10': 'datasets', 
+  'CIFAR100': 'datasets', 
+  'ImageNet': 'datasets/image-net', 
+  'DVSGesture': '/datasets/dvs'}
 
 # def GetCifar10(batchsize, attack=False):
 #     if attack:
@@ -101,7 +100,7 @@ def GetImageNet(batchsize):
     test_dataloader = DataLoader(test_data, batch_size=batchsize, shuffle=False, num_workers=2, sampler=test_sampler) 
     return train_dataloader, test_dataloader
 
-def GetDVSGesture(batchsize, test_batchsize=4, slicer=SliceByTime(time_window=100000), filter_time=10000, time_window=1000, ms_end=1500):
+  def GetDVSGesture(batchsize, test_batchsize=4, slicer=SliceByTime(time_window=100000), filter_time=10000, time_window=1000, ms_end=1500):
 
     sensor_size = tonic.datasets.DVSGesture.sensor_size
     trans_ann_train = tonic.transforms.Compose([

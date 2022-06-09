@@ -1,0 +1,38 @@
+Sender: LSF System <lsfadmin@eu-g2-03>
+Subject: Job 218556962: <python main.py test --model=resnet18 --data=cifar10 --id=resnet18_LR20_cifar10_L4 --mode=ann> in cluster <euler> Done
+
+Job <python main.py test --model=resnet18 --data=cifar10 --id=resnet18_LR20_cifar10_L4 --mode=ann> was submitted from host <eu-login-20> by user <pintoa> in cluster <euler> at Sun May 15 17:14:48 2022
+Job was executed on host(s) <4*eu-g2-03>, in queue <gpu.24h>, as user <pintoa> in cluster <euler> at Sun May 15 18:33:34 2022
+</cluster/home/pintoa> was used as the home directory.
+</cluster/home/pintoa/ai-research-snn> was used as the working directory.
+Started at Sun May 15 18:33:34 2022
+Terminated at Sun May 15 18:33:56 2022
+Results reported at Sun May 15 18:33:56 2022
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+python main.py test --model=resnet18 --data=cifar10 --id=resnet18_LR20_cifar10_L4 --mode=ann
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   23.32 sec.
+    Max Memory :                                 3589 MB
+    Average Memory :                             198.33 MB
+    Total Requested Memory :                     8192.00 MB
+    Delta Memory :                               4603.00 MB
+    Max Swap :                                   -
+    Max Processes :                              3
+    Max Threads :                                4
+    Run time :                                   21 sec.
+    Turnaround time :                            4748 sec.
+
+The output (if any) follows:
+
+Files already downloaded and verified
+Files already downloaded and verified
+Accuracy: 0.9377
