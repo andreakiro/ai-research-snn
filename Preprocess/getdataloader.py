@@ -5,8 +5,18 @@ import torch
 import os
 from Preprocess.augment import Cutout, CIFAR10Policy
 
+import numpy as np
+
+import tonic
+from tonic.slicers import SliceByEventCount, SliceByTime
+from tonic import SlicedDataset, DiskCachedDataset
+
 # your own data dir
-DIR = {'CIFAR10': 'datasets', 'CIFAR100': 'datasets', 'ImageNet': 'datasets/image-net'}
+DIR = {
+  'CIFAR10': 'datasets', 
+  'CIFAR100': 'datasets', 
+  'ImageNet': 'datasets/image-net', 
+  'DVSGesture': '/datasets/dvs'}
 
 # def GetCifar10(batchsize, attack=False):
 #     if attack:
@@ -89,3 +99,43 @@ def GetImageNet(batchsize):
     test_sampler = torch.utils.data.distributed.DistributedSampler(test_data)
     test_dataloader = DataLoader(test_data, batch_size=batchsize, shuffle=False, num_workers=2, sampler=test_sampler) 
     return train_dataloader, test_dataloader
+
+  def GetDVSGesture(batchsize, test_batchsize=4, slicer=SliceByTime(time_window=100000), filter_time=10000, time_window=1000, ms_end=1500):
+
+    sensor_size = tonic.datasets.DVSGesture.sensor_size
+    trans_ann_train = tonic.transforms.Compose([
+                            tonic.transforms.Denoise(filter_time=filter_time),
+                            #tonic.transforms.RandomFlipPolarity(),
+                            #tonic.transforms.SpatialJitter(sensor_size=sensor_size, clip_outliers=True),
+                            tonic.transforms.ToImage(sensor_size=sensor_size),
+                            transforms.Lambda(lambda x: torch.from_numpy(x/31)),
+                            Cutout(n_holes=1, length=8)
+                        ])
+
+    trans_ann_test = tonic.transforms.Compose([
+                            tonic.transforms.Denoise(filter_time=filter_time),
+                            tonic.transforms.ToImage(sensor_size=sensor_size),
+                            transforms.Lambda(lambda x: torch.from_numpy(x/31))
+                        ])
+
+    trans_snn = tonic.transforms.Compose([
+        tonic.transforms.Denoise(filter_time=filter_time),
+        tonic.transforms.ToFrame(sensor_size=sensor_size, time_window=time_window),
+        transforms.Lambda(lambda x: x[:ms_end, :, :, :])
+    ])
+
+    train_data = tonic.datasets.DVSGesture(save_to=os.path.join(DIR['DVSGesture'], 'train'), train=True, transform=None)
+    test_data_ann = tonic.datasets.DVSGesture(save_to=os.path.join(DIR['DVSGesture'], 'test'), train=False, transform=None)
+    test_data_snn = tonic.datasets.DVSGesture(save_to=os.path.join(DIR['DVSGesture'], 'test'), train=False, transform=trans_snn)
+
+    sliced_td = SlicedDataset(train_data, slicer=slicer, transform=trans_ann_train, metadata_path=os.path.join(DIR['DVSGesture'], 'metedata/train'))
+    sliced_ann = SlicedDataset(test_data_ann, slicer=slicer, transform=trans_ann_test, metadata_path=os.path.join(DIR['DVSGesture'], 'metedata/test'))
+
+    cached_td = DiskCachedDataset(sliced_td, target_transform=None, cache_path=os.path.join(DIR['DVSGesture'], 'cache/train'))
+    cached_ann = DiskCachedDataset(sliced_ann, target_transform=None, cache_path=os.path.join(DIR['DVSGesture'], 'cache/test'))
+
+    train_dataloader = DataLoader(cached_td, batch_size=batchsize, shuffle=True, num_workers=8, pin_memory=True)
+    test_dataloader_ann = DataLoader(cached_ann, batch_size=batchsize, shuffle=False, num_workers=4, pin_memory=True)
+    test_dataloader_snn = DataLoader(test_data_snn, batch_size=test_batchsize, shuffle=False, num_workers=4, pin_memory=True)
+
+    return train_dataloader, test_dataloader_ann, test_dataloader_snn
